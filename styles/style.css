@@ -155,8 +155,12 @@ table {
     border: var(--grey-color) solid 1px;
   }
 
-  .form-items > input:user-invalid{
-    border: red;
+  input::placeholder{
+    opacity: 0.3;
+  }
+
+  .form-item > input:user-invalid{
+    border: red solid 1px;
   }
 
   div.form-buttons{

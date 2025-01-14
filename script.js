@@ -59,10 +59,21 @@ function displayBooksOf(library){
 }
 
 const showBtn = document.querySelector(".show-modal");
+const closeBtn = document.querySelector(".cancel");
+const confirmBtn = document.querySelector(".confirm")
 const dialog = document.querySelector("dialog")
+const form = document.querySelector("form");
+
+// Dialog event listeners
 showBtn.addEventListener("click", () =>{
     dialog.showModal();
   })
+closeBtn.addEventListener("click", e => {
+  e.preventDefault();
+  dialog.close();
+});
 
-function addBook(title, author, pages, read){
-}
+confirmBtn.addEventListener("click", e =>{
+  const book = document.querySelectorAll(["#title", "#author", "#pages", "#read"]);
+  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value);
+})
