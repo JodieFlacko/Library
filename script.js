@@ -30,36 +30,24 @@ function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
 }
-
-  const body = document.querySelector("body");
-  const table = document.createElement("table");
-  const caption = document.createElement("caption");
-  caption.textContent = "Books";
-  const tHead = document.createElement("thead");
-  const tBody = document.createElement("tbody");
-  body.appendChild(table);
-  table.appendChild(caption);
-  table.appendChild(tHead);
-  for(category in myLibrary[0]){
-    const tHeader = document.createElement("th");
-    tHeader.textContent = category;
-    tHead.appendChild(tHeader);
-  };
-  table.appendChild(tBody);
-  myLibrary.forEach(book =>{
+function displayLibrary(library){
+  library.forEach(book =>{
     displayBook(book);
-    });
+  });
+}
 
 function displayBook(book){
+  const tBody = document.querySelector("tbody");
   const tRow = document.createElement("tr");
   tBody.appendChild(tRow);
   for(category in book) {
     const tCell = document.createElement("td");
     tCell.textContent = book[category];
     tRow.appendChild(tCell);
-    }
   }
+}
 
+displayLibrary(myLibrary);
 const showBtn = document.querySelector(".show-modal");
 const closeBtn = document.querySelector(".cancel");
 const confirmBtn = document.querySelector(".confirm")
