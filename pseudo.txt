@@ -1,0 +1,13 @@
+PSEUDOCODE
+Aim: display books in the array in a table with a function.
+
+1. When displayBooksOf is called, check if the table structure exists:
+    1.2 create a function checkTableExistence(): it will run a document.querySelector("table"). If it is undefined
+        then create a table; else a table already exists
+2. In case a table exist, push every item in the relative cell.
+3. In case the table does not exist: 
+    3.1 Create a table element;
+    3.2 Create the table row heading for the categories;
+    3.3 Create the table column headings with the categories;
+    3.4 Create a new row for each book;
+    3.5 Assign every info of the book to the relative category
