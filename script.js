@@ -57,3 +57,12 @@ function displayBooksOf(library){
     }
   });
 }
+
+const showBtn = document.querySelector(".show-modal");
+const dialog = document.querySelector("dialog")
+showBtn.addEventListener("click", () =>{
+    dialog.showModal();
+  })
+
+function addBook(title, author, pages, read){
+}

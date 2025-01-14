@@ -5,10 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/modern-normalize.css" defer>
     <link rel="stylesheet" href="styles/style.css" defer>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Library</title>
 </head>
 <body>
+    <div class="container">
+        <dialog>
+            <h2 class="dialog-heading">Want to add a book?</h2>
+            <p>Enter the title of the book, the name of the author, the pages, and if you have read it or not.</p>
+                <form method="dialog">
+                    <div class="form-wrapper">
+                        <div class="form-item">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" autofocus required>
+                            <div class="error"><span></span></div>
+                        </div>
+                        <div class="form-item">
+                            <label for="author">Author</label>
+                            <input type="text" id="author"name="author" required>
+                            <div class="error"><span></span></div>
+                        </div>
+                        <div class="form-item">
+                            <label for="pages">Pages</label>
+                            <input type="text" id="pages" name="pages" required>
+                            <div class="error"><span></span></div>
+                        </div>
+                        <div class="form-item">
+                            <label for="read">Read status</label>
+                            <input type="text" id="read" name="read" required>
+                            <div class="error"><span></span></div>
+                        </div>
+                        <div class="form-buttons">
+                            <button class="confirm">Confirm</button>
+                            <button class="cancel">Cancel</button>
+                            <div class="error"><span></span></div>
+                        </div>
+                    </div>
+                </form>
+        </dialog>
 
+            <button class="show-modal">Add a book</button>
+      </div>
 </body>
 </html>
