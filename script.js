@@ -31,7 +31,6 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-function displayBooksOf(library){
   const body = document.querySelector("body");
   const table = document.createElement("table");
   const caption = document.createElement("caption");
@@ -48,6 +47,10 @@ function displayBooksOf(library){
   };
   table.appendChild(tBody);
   myLibrary.forEach(book =>{
+    displayBook(book);
+    });
+
+function displayBook(book){
   const tRow = document.createElement("tr");
   tBody.appendChild(tRow);
   for(category in book) {
@@ -55,8 +58,7 @@ function displayBooksOf(library){
     tCell.textContent = book[category];
     tRow.appendChild(tCell);
     }
-  });
-}
+  }
 
 const showBtn = document.querySelector(".show-modal");
 const closeBtn = document.querySelector(".cancel");
@@ -68,12 +70,14 @@ const form = document.querySelector("form");
 showBtn.addEventListener("click", () =>{
     dialog.showModal();
   })
-closeBtn.addEventListener("click", e => {
+closeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   dialog.close();
 });
 
-confirmBtn.addEventListener("click", e =>{
-  const book = document.querySelectorAll(["#title", "#author", "#pages", "#read"]);
-  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value);
+form.addEventListener("submit", () =>{
+  let book = document.querySelectorAll(["#title", "#author", "#pages", "#read"]);
+  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value); 
+  displayBook(myLibrary[myLibrary.length - 1]);
+  form.reset();
 })
