@@ -209,5 +209,11 @@ input:user-invalid + .error::before{
   color: red;
 }
 
+input:user-invalid + .error.number::before{
+  content: "value must be equal or less then 9999";
+}
 
+.remove-book{
+  margin: 0;
+}
 
