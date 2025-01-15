@@ -66,6 +66,26 @@ table {
   tr:nth-child(odd) td {
     background-color: rgb(245,245,245);
   }
+
+  tr th:nth-child(1) {
+    width: 200px;
+  }
+  
+  tr th:nth-child(2) {
+    width: 200px;
+  }
+  
+  tr th:nth-child(3) {
+    width: 50px;
+  }
+
+  tr th:nth-child(4) {
+    width: 200px;
+  }
+
+  tr th:nth-child(5) {
+    width: 141.5px;
+  }
   
   caption {
     padding: 10px;
@@ -108,7 +128,7 @@ table {
 
   .container{
     margin: 0 auto;
-    width: 700px;
+    width: 900px;
     max-width: 100vw;
     padding: 0 2rem;
   }
@@ -215,5 +235,7 @@ input:user-invalid + .error.number::before{
 
 .remove-book{
   margin: 0;
+  width: 100px;
+  font-size: 90%;
 }
 
