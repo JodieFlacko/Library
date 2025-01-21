@@ -53,42 +53,17 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 function displayLibrary(library){
-  clearTable();
   library.forEach(book =>{
     displayBook(book, library);
   });
 }
 
 function displayBook(book, library){
-  const tBody = document.querySelector("tbody");
-  const tRow = document.createElement("tr");
-  const rmBtn = document.createElement("button");
-  tBody.appendChild(tRow);
-  for(category in book) {
-    const tCell = document.createElement("td");
-    tCell.textContent = book[category];
-    tRow.appendChild(tCell);
-  }
-  const tCell = document.createElement("td");
-  tRow.appendChild(tCell);
-  tCell.appendChild(rmBtn);
-  rmBtn.classList.add("remove-book");
-  rmBtn.setAttribute("data-attribute", library.map(item => item.title).indexOf(book.title));
-  rmBtn.textContent = "Remove book";
-  rmBtn.addEventListener("click", e => {
-    const index = rmBtn.getAttribute("data-attribute");
-    removeBook(index, myLibrary); 
-  });
-}
 
-function clearTable(){
-  const rows = document.querySelectorAll("tbody tr");
-  rows.forEach(row => row.remove());
 }
 
 function removeBook(index, library){
-  library.splice(index, 1);
-  displayLibrary(library);
+
 }
 
 

@@ -28,68 +28,19 @@
   --dark-color-bg: rgb(55, 65, 81);
   --grey-color: rgb(107, 114, 128);
   --leading: 0.025em;
+  --blue-color-bg: rgb(96, 132, 215);
+  --lime-color: rgb(156, 236, 91);
+  --button-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px inset;
 }
 
 body {
-    font-family: "airbnbcereal_w_bkregular  ", Arial, Helvetica, sans-serif;
+    font-family: "airbnbcereal_w_bkregular", Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--blue-color-bg);
 }
 
 /* Table styling from MDN */
-
-table {
-    border-collapse: collapse;
-    border: 2px solid rgb(200,200,200);
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-    margin: 0 auto;
-  }
-  
-  td, th {
-    border: 1px solid rgb(190,190,190);
-    padding: 10px 20px;
-  }
-  
-  th {
-    background-color: rgb(235,235,235);
-  }
-  
-  td {
-    text-align: center;
-  }
-  
-  tr:nth-child(even) td {
-    background-color: rgb(250,250,250);
-  }
-  
-  tr:nth-child(odd) td {
-    background-color: rgb(245,245,245);
-  }
-
-  tr th:nth-child(1) {
-    width: 200px;
-  }
-  
-  tr th:nth-child(2) {
-    width: 200px;
-  }
-  
-  tr th:nth-child(3) {
-    width: 50px;
-  }
-
-  tr th:nth-child(4) {
-    width: 200px;
-  }
-
-  tr th:nth-child(5) {
-    width: 141.5px;
-  }
-  
-  caption {
-    padding: 10px;
-  }
 
   .h2 {
     margin: 2rem 0 1rem;
@@ -102,11 +53,12 @@ table {
     line-height: 1.625;
   }
 
-  input, div, span, p {
+  input, div, span, p,  form {
     font-family: inherit;
+    font-size: 100%;
   }
 
-  button {
+  dialog button {
     display: block;
     margin-top: 2rem;
     width: calc(44px * var(--ratio));
@@ -116,6 +68,7 @@ table {
     letter-spacing: calc(3 * var(--leading, 0.025em));
     color: var(--grey-color);
     background-color: var(--light-color-bg);
+    font-family: inherit;
     font-size: large;
     font-weight: 700;
   }
@@ -165,8 +118,7 @@ table {
     border-radius: calc(3px * var(--ratio));
     outline: none;
     border: transparent solid 1px;
-    background-color: var(--light-color-bg);
-    font-family: inherit;
+    background-color: var(--light-color-bg);  
     font-size: medium;
     padding: 0.3rem 0.5rem;
     height: 40px;
@@ -239,3 +191,47 @@ input:user-invalid + .error.number::before{
   font-size: 90%;
 }
 
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
+  column-gap: 16px;
+  row-gap: 12px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 1fr 3fr 1fr;
+  padding: 16px;
+  border-left: 12px solid var(--lime-color);
+  height: 300px;
+  border-radius: 12px;
+  background-color: var(--light-color-bg);
+}
+
+.card p {
+  font-size: 80%;
+}
+
+.card-buttons{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.card-buttons button{
+  width: auto;
+  border: none;
+  background-color: inherit;
+}
+
+.card-buttons button:active {
+  box-shadow: var(--button-shadow);
+}
+
+.card-buttons button:focus{
+  outline: none;
+  border: none;
+}
