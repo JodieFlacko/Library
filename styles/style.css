@@ -161,7 +161,7 @@ table {
     font-weight: bold;
   }
 
-  .form-item > input{
+  .form-item > input, .radio{
     border-radius: calc(3px * var(--ratio));
     outline: none;
     border: transparent solid 1px;
@@ -230,7 +230,7 @@ input:user-invalid + .error::before{
 }
 
 input:user-invalid + .error.number::before{
-  content: "value must be equal or less then 9999";
+  content: " Enter a value between 0 and 9999";
 }
 
 .remove-book{
@@ -239,3 +239,15 @@ input:user-invalid + .error.number::before{
   font-size: 90%;
 }
 
+.radio  {
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.radio label{
+  font-family: inherit;
+  font-size: 80%;
+  font-weight: lighter;
+}

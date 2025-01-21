@@ -31,9 +31,17 @@
                             <div class="error number"><span></span></div>
                         </div>
                         <div class="form-item">
-                            <label for="read">Read status</label>
-                            <input type="text" id="read" name="read" required placeholder="not read yet" maxlength="25">
-                            <div class="error"><span></span></div>
+                            <label for="radio">Status</label>
+                            <div class="radio">
+                                <div>
+                                    <input type="radio" id="read" name="read" value="read">
+                                    <label for="read">Read</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="not-read" name="read" value="not read">
+                                    <label for="not-read">Not read yet</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-buttons">
                             <button class="confirm">Confirm</button>
