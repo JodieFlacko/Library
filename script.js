@@ -59,7 +59,7 @@ function displayLibrary(library){
 }
 
 function displayBook(book, library){
-
+  
 }
 
 function removeBook(index, library){
