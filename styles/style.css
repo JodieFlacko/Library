@@ -42,20 +42,17 @@ body {
 
 /* Table styling from MDN */
 
-  .h2 {
-    margin: 2rem 0 1rem;
+  h2 {
     font-weight: 800;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden; 
   }
 
   p {
     color: var(--grey-color);
     letter-spacing: var(--leading, 0.025em);
     line-height: 1.625;
-  }
-
-  input, div, span, p,  form {
-    font-family: inherit;
-    font-size: 100%;
   }
 
   dialog button {
@@ -79,9 +76,10 @@ body {
     box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.2rem var(--dark-color-bg);
   }
 
+
   .container{
     margin: 0 auto;
-    width: 900px;
+    width: 1100px;
     max-width: 100vw;
     padding: 0 2rem;
   }
@@ -114,7 +112,7 @@ body {
     font-weight: bold;
   }
 
-  .form-item > input{
+  .form-item > input, dialog textarea{
     border-radius: calc(3px * var(--ratio));
     outline: none;
     border: transparent solid 1px;
@@ -124,7 +122,7 @@ body {
     height: 40px;
   }
 
-  .form-item > input:focus{
+  .form-item > input:focus, dialog textarea:focus{
     border: var(--grey-color) solid 1px;
   }
 
@@ -138,7 +136,8 @@ body {
 
   div.form-buttons{
     display: flex;
-    width: 100%;
+    width: 80%;
+    margin-left: -16px;
     justify-content: space-between;
     align-items: center;
   }
@@ -183,6 +182,7 @@ input:user-invalid + .error::before{
 
 input:user-invalid + .error.number::before{
   content: "value must be equal or less then 9999";
+  font-family: inherit;
 }
 
 .remove-book{
@@ -209,10 +209,16 @@ input:user-invalid + .error.number::before{
   height: 300px;
   border-radius: 12px;
   background-color: var(--light-color-bg);
+  overflow: hidden;
 }
 
 .card p {
   font-size: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  line-height: 1.5em;
+  max-height: 4.5em; /* 3 lines * line-height */
 }
 
 .card-buttons{
@@ -222,9 +228,8 @@ input:user-invalid + .error.number::before{
 }
 
 .card-buttons button{
-  width: auto;
   background-color: inherit;
-  border: none;
+  border: solid 1px transparent;
 }
 
 .card-buttons button:active {
@@ -235,5 +240,28 @@ input:user-invalid + .error.number::before{
   border: 0.0625rem solid transparent;
 }
 
+dialog .text-area{
+  flex: 0.75 0 auto;
+  height: 110px;
+  padding: 0 0 16px 7px;
+}
+dialog textarea{
+  width: 95%;
+  height: 100%;
+  resize: none;
+}
 
 
+.author h4{
+  display: inline;
+}
+
+.author span{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  max-height: 4.5em;
+  font-size: 90%;
+  color: black;
+  letter-spacing: var(--leading, 0.025em);
+}
