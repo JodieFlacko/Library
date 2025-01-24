@@ -16,14 +16,14 @@ const myLibrary = [
     title: "bellissimamente",
     author: "Sort",
     pages: 198,
-    read: "not read yet",
+    read: "not-read",
   },
 
   {
     title: "billissimissimisssimissima",
     author: "Sort",
     pages: 198,
-    read: "not read yet",
+    read: "not-read",
   },
 ];
 
@@ -44,8 +44,8 @@ closeBtn.addEventListener("click", (e) => {
 });
 
 form.addEventListener("submit", () =>{
-  let book = document.querySelectorAll(["#title", "#author", "#pages", "#read", "#description"]);
-  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value, book[4].value, index); 
+  let book = document.querySelectorAll(["#title", "#author", "#pages", 'input[name="read"]:checked', "#description"]);
+  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value, book[4].value, index);
   form.reset();
 })
 
@@ -119,7 +119,7 @@ function displayBook(book, library){
 
   btnRead.addEventListener("click", ()=>{
     const index = btnRead.getAttribute("data-attribute");
-    toggleStatus(btnRead, imgRead, imgRm);
+    toggleStatus(btnRead, imgRead, imgRm, index);
   })
 
   btnRead.appendChild(imgRead);
@@ -148,6 +148,6 @@ function removeBook(index, library){
   })
 }
 
-function toggleStatus(index){
-
+function toggleStatus(btn, imgRead, imgRm,index){
+  
 }
