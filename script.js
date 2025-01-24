@@ -4,7 +4,7 @@ const myLibrary = [
     author: "Fratm",
     pages: 295,
     read: "read",
-    description: ""
+    description: "OOOOOoo"
   },
   {
     title: "è",
@@ -43,8 +43,8 @@ closeBtn.addEventListener("click", (e) => {
 });
 
 form.addEventListener("submit", () =>{
-  let book = document.querySelectorAll(["#title", "#author", "#pages", "#read"]);
-  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value); 
+  let book = document.querySelectorAll(["#title", "#author", "#pages", "#read", "#description"]);
+  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value, book[4].value); 
   displayBook(myLibrary[myLibrary.length - 1], myLibrary);
   form.reset();
 })
@@ -57,8 +57,8 @@ function Book(title, author, pages, read, description) {
   this.description = description;
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  const book = new Book(title, author, pages, read);
+function addBookToLibrary(title, author, pages, read, description) {
+  const book = new Book(title, author, pages, read, description);
   myLibrary.push(book);
 }
 function displayLibrary(library){
@@ -78,11 +78,23 @@ function displayBook(book, library){
   const par = document.createElement("p");
   par.textContent = book.description;
 
+  const author = document.createElement("div");
+  author.classList.add("author");
+
+  const authorHeader = document.createElement("h4");
+  authorHeader.textContent = "Author: ";
+  const authorName = document.createElement("span");
+  authorName.textContent = book.author;
+
+  author.appendChild(authorHeader);
+  author.appendChild(authorName);
+
   const btnsDiv = document.createElement("div");
   btnsDiv.classList.add("card-buttons"); 
 
   card.appendChild(cardHeader);
   card.appendChild(par);
+  card.appendChild(author);
   card.appendChild(btnsDiv);
   
   const btnRead = document.createElement("button");
@@ -97,7 +109,7 @@ function displayBook(book, library){
   setAttributes(imgRm, {src:`images/book-remove.svg`, alt:"no-image", width:"18", height:"18"});
   
   btnRead.appendChild(imgRead);
-  btnRm.appendChild(imgRm);  
+  btnRm.appendChild(imgRm); 
   
   content.appendChild(card);
 }
