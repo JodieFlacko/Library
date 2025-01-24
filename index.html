@@ -32,8 +32,16 @@
                         </div>
                         <div class="form-item">
                             <label for="read">Read status</label>
-                            <input type="text" id="read" name="read" required placeholder="not read yet" maxlength="25">
-                            <div class="error"></div>
+                            <div class="radio">
+                                <p>
+                                    <input type="radio" id="read"  value="read" name="read">
+                                    <label for="read">Read</label>
+                                </p>
+                                <p>
+                                    <input type="radio" id="not-read" value="not-read" name="read" checked>
+                                    <label for="not-read">Not Read</label>
+                                </p>
+                            </div>
                         </div>
                         <div class="form-item text-area">
                             <label for="description">Description</label>

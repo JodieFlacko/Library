@@ -111,10 +111,16 @@ function displayBook(book, library){
   setAttributes(imgRead, {src:`images/book-open-blank-variant-outline.svg`, alt:"no-image", width:"18", height:"18"});
   setAttributes(imgRm, {src:`images/book-remove.svg`, alt:"no-image", width:"18", height:"18"});
   btnRm.setAttribute("data-attribute", index);
+  btnRead.setAttribute("data-attribute", index);
   btnRm.addEventListener("click", () =>{
     const index = btnRm.getAttribute("data-attribute");
     removeBook(index, myLibrary);
   });
+
+  btnRead.addEventListener("click", ()=>{
+    const index = btnRead.getAttribute("data-attribute");
+    toggleStatus(btnRead, imgRead, imgRm);
+  })
 
   btnRead.appendChild(imgRead);
   btnRm.appendChild(imgRm); 
@@ -142,4 +148,6 @@ function removeBook(index, library){
   })
 }
 
+function toggleStatus(index){
 
+}
