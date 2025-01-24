@@ -31,6 +31,7 @@ const showBtn = document.querySelector(".show-modal");
 const closeBtn = document.querySelector(".cancel");
 const dialog = document.querySelector("dialog")
 const form = document.querySelector("form");
+let index = 0;
 
 displayLibrary(myLibrary);
 // Dialog event listeners
@@ -44,22 +45,24 @@ closeBtn.addEventListener("click", (e) => {
 
 form.addEventListener("submit", () =>{
   let book = document.querySelectorAll(["#title", "#author", "#pages", "#read", "#description"]);
-  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value, book[4].value); 
-  displayBook(myLibrary[myLibrary.length - 1], myLibrary);
+  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value, book[4].value, index); 
   form.reset();
 })
 
-function Book(title, author, pages, read, description) {
+
+function Book(title, author, pages, read, description, index) {
   this.title = title;  
   this.author = author;
   this.pages = pages;
   this.read = read;
   this.description = description;
+  this.index = index;
 }
 
 function addBookToLibrary(title, author, pages, read, description) {
-  const book = new Book(title, author, pages, read, description);
+  const book = new Book(title, author, pages, read, description, index);
   myLibrary.push(book);
+  displayBook(book);
 }
 function displayLibrary(library){
   library.forEach(book =>{
@@ -107,11 +110,18 @@ function displayBook(book, library){
   const imgRm = document.createElement("img");
   setAttributes(imgRead, {src:`images/book-open-blank-variant-outline.svg`, alt:"no-image", width:"18", height:"18"});
   setAttributes(imgRm, {src:`images/book-remove.svg`, alt:"no-image", width:"18", height:"18"});
-  
+  btnRm.setAttribute("data-attribute", index);
+  btnRm.addEventListener("click", () =>{
+    const index = btnRm.getAttribute("data-attribute");
+    removeBook(index, myLibrary);
+  });
+
   btnRead.appendChild(imgRead);
   btnRm.appendChild(imgRm); 
   
+  card.setAttribute("data-attribute", index);
   content.appendChild(card);
+  index++;
 }
 
 function setAttributes(el, attr){
@@ -121,7 +131,15 @@ function setAttributes(el, attr){
 }
 
 function removeBook(index, library){
-
+  library.splice(index, 1);
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    const dataAttribute = card.getAttribute("data-attribute"); 
+    if(dataAttribute === index) {
+      const content = document.querySelector(".content");
+      content.removeChild(card);
+    }
+  })
 }
 
 
