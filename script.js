@@ -4,19 +4,22 @@ const myLibrary = [
     author: "Fratm",
     pages: 295,
     read: "read",
-    description: "OOOOOoo"
+    description: "OOOOOoo",
+    index: 0,
   },
   {
     title: "è",
     author: "Patt",
     pages: 245,
     read: "read",
+    index: 1,
   },
   {
     title: "bellissimamente",
     author: "Sort",
     pages: 198,
     read: "not-read",
+    index: 2,
   },
 
   {
@@ -24,6 +27,7 @@ const myLibrary = [
     author: "Sort",
     pages: 198,
     read: "not-read",
+    index: 3,
   },
 ];
 
@@ -73,13 +77,17 @@ function displayLibrary(library){
 function displayBook(book, library){
   const content = document.querySelector(".content");
   const card = document.createElement("div");
+
+  card.setAttribute("data-attribute", index);
+  content.appendChild(card);
+
   card.classList.add("card");
   
-  const cardHeader = document.createElement("h2");
-  cardHeader.textContent = book.title;
+  const title = document.createElement("h2");
+  title.textContent = book.title;
 
-  const par = document.createElement("p");
-  par.textContent = book.description;
+  const description = document.createElement("p");
+  description.textContent = book.description;
 
   const author = document.createElement("div");
   author.classList.add("author");
@@ -92,44 +100,42 @@ function displayBook(book, library){
   author.appendChild(authorHeader);
   author.appendChild(authorName);
 
-  const btnsDiv = document.createElement("div");
-  btnsDiv.classList.add("card-buttons"); 
+  const cardBtns = document.createElement("div");
+  cardBtns.classList.add("card-buttons"); 
 
-  card.appendChild(cardHeader);
-  card.appendChild(par);
+  card.appendChild(title);
+  card.appendChild(description);
   card.appendChild(author);
-  card.appendChild(btnsDiv);
+  card.appendChild(cardBtns);
   
-  const btnRead = document.createElement("button");
-  const btnRm = document.createElement("button");
+  const readStatusBtn = document.createElement("button");
+  const removeBtn = document.createElement("button");
 
-  btnsDiv.appendChild(btnRead);
-  btnsDiv.appendChild(btnRm);
+  cardBtns.appendChild(readStatusBtn);
+  cardBtns.appendChild(removeBtn);
 
-  const imgRead = document.createElement("img");
-  const imgNotRead = document.createElement("img");
-  const imgRm = document.createElement("img");
-  setAttributes(imgRm, {src:`images/book-remove.svg`, alt:"no-image", width:"18", height:"18"});
+  const readStatusImg = document.createElement("img");
+  const removeBookImg = document.createElement("img");
+  setAttributes(removeBookImg, {src:`images/book-remove.svg`, alt:"no-image", width:"18", height:"18"});
 
-  btnRm.setAttribute("data-attribute", index);
-  btnRead.setAttribute("data-attribute", index);
-  btnRm.addEventListener("click", () =>{
-    const index = btnRm.getAttribute("data-attribute");
-    removeBook(index, myLibrary);
+  removeBtn.setAttribute("data-attribute", index);
+  readStatusBtn.setAttribute("data-attribute", index);
+  removeBtn.addEventListener("click", () =>{
+    const Card = card;
+    removeBook(Card, myLibrary);
   });
 
-  btnRead.addEventListener("click", ()=>{
-    toggleStatus(book, imgRead);
+  readStatusBtn.addEventListener("click", ()=>{
+    toggleStatus(book, readStatusImg);
   })
   //Appending the image showing the read status
-  setAttributes(imgRead, {alt:"no-image", width:"18", height:"18"});
-  setAttributes(imgRead, {alt:"no-image", width:"18", height:"18"});
-  toggleStatus(book, imgRead)
-  btnRm.appendChild(imgRm); 
-  btnRead.appendChild(imgRead);
+  setAttributes(readStatusImg, {alt:"no-image", width:"18", height:"18"});
+  setAttributes(readStatusImg, {alt:"no-image", width:"18", height:"18"});
 
-  card.setAttribute("data-attribute", index);
-  content.appendChild(card);
+  toggleStatus(book, readStatusImg);
+  removeBtn.appendChild(removeBookImg); 
+  readStatusBtn.appendChild(readStatusImg);
+
   index++;
 }
 
@@ -139,20 +145,17 @@ function setAttributes(el, attr){
   }
 }
 
-function removeBook(index, library){
-  library.splice(index, 1);
-  const cards = document.querySelectorAll(".card");
-  cards.forEach(card => {
-    const dataAttribute = card.getAttribute("data-attribute"); 
-    if(dataAttribute === index) {
-      const content = document.querySelector(".content");
-      content.removeChild(card);
-    }
-  })
+function removeBook(card, library){
+  const index = card.getAttribute("data-attribute");
+  library.splice((library.findIndex(el =>{
+    return el.index == index
+  })), 1);
+  const content = document.querySelector(".content");
+  content.removeChild(card);    
 }
 
-function toggleStatus(book, imgRead){
+function toggleStatus(book, readStatusImg){
   book.read = book.read === "read" ? "not-read" : "read";
-  if(book.read === "read") setAttributes(imgRead, {src: `images/book-check.svg`, title: "You have read this book"});
-  else setAttributes(imgRead, {src: `images/book-open-blank-variant-outline.svg`, title: "Yuo are reading this book"});
+  if(book.read === "read") setAttributes(readStatusImg, {src: `images/book-check.svg`, title: "You have read this book"});
+  else setAttributes(readStatusImg, {src: `images/book-open-blank-variant-outline.svg`, title: "Yuo are reading this book"});
 }
