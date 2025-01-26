@@ -31,28 +31,7 @@ const myLibrary = [
   },
 ];
 
-const showBtn = document.querySelector(".show-modal");
-const closeBtn = document.querySelector(".cancel");
-const dialog = document.querySelector("dialog")
-const form = document.querySelector("form");
-let index = 0;
-
-displayLibrary(myLibrary);
-// Dialog event listeners
-showBtn.addEventListener("click", () =>{
-    dialog.showModal();
-  })
-closeBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  dialog.close();
-});
-
-form.addEventListener("submit", () =>{
-  let book = document.querySelectorAll(["#title", "#author", "#pages", 'input[name="read"]:checked', "#description"]);
-  addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value, book[4].value, index);
-  form.reset();
-})
-
+//Main functions
 
 function Book(title, author, pages, read, description, index) {
   this.title = title;  
@@ -60,11 +39,11 @@ function Book(title, author, pages, read, description, index) {
   this.pages = pages;
   this.read = read;
   this.description = description;
-  this.index = index;
+  this.index = myLibrary.length;
 }
 
 function addBookToLibrary(title, author, pages, read, description) {
-  const book = new Book(title, author, pages, read, description, index);
+  const book = new Book(title, author, pages, read, description, myLibrary.length);
   myLibrary.push(book);
   displayBook(book);
 }
@@ -104,6 +83,7 @@ function displayBook(book){
   readStatusBtn.appendChild(readStatusImg);
 
   //Set attributes
+  const index = book.index;
   card.setAttribute("data-attribute", index);
   setAttributes(removeBookImg, {src:`images/book-remove.svg`, alt:"no-image", width:"18", height:"18"});
   setAttributes(readStatusImg, {alt:"no-image", width:"18", height:"18"});
@@ -131,9 +111,33 @@ function displayBook(book){
     toggleStatus(book, readStatusImg);
   })
 
-  //Increment index
-  index++;
 }
+
+function createModal(){
+  const showBtn = document.querySelector(".show-modal");
+  const closeBtn = document.querySelector(".cancel");
+  const dialog = document.querySelector("dialog")
+  const form = document.querySelector("form");
+  let index = 0;
+
+  // Dialog event listeners
+  showBtn.addEventListener("click", () =>{
+      dialog.showModal();
+    })
+  closeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialog.close();
+  });
+
+  form.addEventListener("submit", () =>{
+    let book = document.querySelectorAll(["#title", "#author", "#pages", 'input[name="read"]:checked', "#description"]);
+    addBookToLibrary(book[0].value, book[1].value, book[2].value, book[3].value, book[4].value, index);
+    form.reset();
+  })
+}
+
+
+//Helper functions
 
 function setAttributes(el, attr){
   for(key in attr){
@@ -155,3 +159,6 @@ function toggleStatus(book, readStatusImg){
   if(book.read === "read") setAttributes(readStatusImg, {src: `images/book-check.svg`, title: "You have read this book"});
   else setAttributes(readStatusImg, {src: `images/book-open-blank-variant-outline.svg`, title: "You are reading this book"});
 }
+
+createModal();
+displayLibrary(myLibrary);
