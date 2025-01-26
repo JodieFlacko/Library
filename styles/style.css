@@ -218,7 +218,7 @@ input:user-invalid + .error.number::before{
   text-overflow: ellipsis;
   display: block;
   line-height: 1.5em;
-  max-height: 4.5em; /* 3 lines * line-height */
+  max-height: 9em; /* 3 lines * line-height */
 }
 
 .card-buttons{
