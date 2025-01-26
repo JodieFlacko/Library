@@ -157,5 +157,5 @@ function removeBook(card, library){
 function toggleStatus(book, readStatusImg){
   book.read = book.read === "read" ? "not-read" : "read";
   if(book.read === "read") setAttributes(readStatusImg, {src: `images/book-check.svg`, title: "You have read this book"});
-  else setAttributes(readStatusImg, {src: `images/book-open-blank-variant-outline.svg`, title: "Yuo are reading this book"});
+  else setAttributes(readStatusImg, {src: `images/book-open-blank-variant-outline.svg`, title: "You are reading this book"});
 }
