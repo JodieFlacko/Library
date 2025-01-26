@@ -113,7 +113,7 @@ function displayBook(book){
 
 }
 
-function createModal(){
+function handleModal(){
   const showBtn = document.querySelector(".show-modal");
   const closeBtn = document.querySelector(".cancel");
   const dialog = document.querySelector("dialog")
@@ -160,5 +160,5 @@ function toggleStatus(book, readStatusImg){
   else setAttributes(readStatusImg, {src: `images/book-open-blank-variant-outline.svg`, title: "You are reading this book"});
 }
 
-createModal();
+handleModal();
 displayLibrary(myLibrary);
