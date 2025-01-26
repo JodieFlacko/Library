@@ -107,9 +107,10 @@ function displayBook(book, library){
   btnsDiv.appendChild(btnRm);
 
   const imgRead = document.createElement("img");
+  const imgNotRead = document.createElement("img");
   const imgRm = document.createElement("img");
-  setAttributes(imgRead, {src:`images/book-open-blank-variant-outline.svg`, alt:"no-image", width:"18", height:"18"});
   setAttributes(imgRm, {src:`images/book-remove.svg`, alt:"no-image", width:"18", height:"18"});
+
   btnRm.setAttribute("data-attribute", index);
   btnRead.setAttribute("data-attribute", index);
   btnRm.addEventListener("click", () =>{
@@ -118,13 +119,15 @@ function displayBook(book, library){
   });
 
   btnRead.addEventListener("click", ()=>{
-    const index = btnRead.getAttribute("data-attribute");
-    toggleStatus(btnRead, imgRead, imgRm, index);
+    toggleStatus(book, imgRead);
   })
-
-  btnRead.appendChild(imgRead);
+  //Appending the image showing the read status
+  setAttributes(imgRead, {alt:"no-image", width:"18", height:"18"});
+  setAttributes(imgRead, {alt:"no-image", width:"18", height:"18"});
+  toggleStatus(book, imgRead)
   btnRm.appendChild(imgRm); 
-  
+  btnRead.appendChild(imgRead);
+
   card.setAttribute("data-attribute", index);
   content.appendChild(card);
   index++;
@@ -148,6 +151,8 @@ function removeBook(index, library){
   })
 }
 
-function toggleStatus(btn, imgRead, imgRm,index){
-  
+function toggleStatus(book, imgRead){
+  book.read = book.read === "read" ? "not-read" : "read";
+  if(book.read === "read") setAttributes(imgRead, {src: `images/book-check.svg`, title: "You have read this book"});
+  else setAttributes(imgRead, {src: `images/book-open-blank-variant-outline.svg`, title: "Yuo are reading this book"});
 }
