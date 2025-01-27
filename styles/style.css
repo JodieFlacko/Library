@@ -24,12 +24,12 @@
 :root {
   --ratio: 3.74;
   --confirm-color: rgb(0, 102, 254);
-  --light-color-bg: rgb(238, 241, 247);
+  --light-color-bg: #ece5da;
   --dark-color-bg: rgb(55, 65, 81);
   --grey-color: rgb(107, 114, 128);
   --leading: 0.025em;
-  --blue-color-bg: rgb(96, 132, 215);
-  --lime-color: rgb(156, 236, 91);
+  --pink-color-bg: #C2968E;
+  --sage-color: #A4AC86;
   --button-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px inset;
 }
 
@@ -37,7 +37,7 @@ body {
     font-family: "airbnbcereal_w_bkregular", Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--blue-color-bg);
+    background-color: var(--pink-color-bg);
 }
 
 /* Table styling from MDN */
@@ -166,7 +166,7 @@ body {
   background-color: var(--light-color-bg);
   font-size: large;
   font-weight: 700;
-  margin: 1rem auto;
+  margin: 1.75rem auto 1rem;
 }
 
 .show-modal:active{
@@ -210,7 +210,7 @@ input:user-invalid + .error.number::before{
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 3fr 1fr;
   padding: 16px;
-  border-left: 12px solid var(--lime-color);
+  border-left: 12px solid var(--sage-color);
   height: 300px;
   border-radius: 12px;
   background-color: var(--light-color-bg);
@@ -285,17 +285,21 @@ dialog textarea{
 
 .header{
   width: 100%;
-  padding: 20px 0;
+  padding-bottom: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--lime-color);
+  background-color: #ece5da;
 }
 
 .header h1{
-  color: rgba(0,0,0,0.6);
-  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-  0px 8px 13px rgba(0,0,0,0.1),
-  0px 18px 23px rgba(0,0,0,0.1);
+  font-family: "Paytone One";
+  margin: 0;
+  padding: 0;
+  color: #f1ebe5;
+  font-size: 70px;
+  text-transform: uppercase;
+  text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
+  letter-spacing: -4px;
 }
 
