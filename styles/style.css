@@ -28,72 +28,25 @@
   --dark-color-bg: rgb(55, 65, 81);
   --grey-color: rgb(107, 114, 128);
   --leading: 0.025em;
+  --blue-color-bg: rgb(96, 132, 215);
+  --lime-color: rgb(156, 236, 91);
+  --button-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px inset;
 }
 
 body {
-    font-family: "airbnbcereal_w_bkregular  ", Arial, Helvetica, sans-serif;
+    font-family: "airbnbcereal_w_bkregular", Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--blue-color-bg);
 }
 
 /* Table styling from MDN */
 
-table {
-    border-collapse: collapse;
-    border: 2px solid rgb(200,200,200);
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-    margin: 0 auto;
-  }
-  
-  td, th {
-    border: 1px solid rgb(190,190,190);
-    padding: 10px 20px;
-  }
-  
-  th {
-    background-color: rgb(235,235,235);
-  }
-  
-  td {
-    text-align: center;
-  }
-  
-  tr:nth-child(even) td {
-    background-color: rgb(250,250,250);
-  }
-  
-  tr:nth-child(odd) td {
-    background-color: rgb(245,245,245);
-  }
-
-  tr th:nth-child(1) {
-    width: 200px;
-  }
-  
-  tr th:nth-child(2) {
-    width: 200px;
-  }
-  
-  tr th:nth-child(3) {
-    width: 50px;
-  }
-
-  tr th:nth-child(4) {
-    width: 200px;
-  }
-
-  tr th:nth-child(5) {
-    width: 141.5px;
-  }
-  
-  caption {
-    padding: 10px;
-  }
-
-  .h2 {
-    margin: 2rem 0 1rem;
+  h2 {
     font-weight: 800;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden; 
   }
 
   p {
@@ -102,11 +55,7 @@ table {
     line-height: 1.625;
   }
 
-  input, div, span, p {
-    font-family: inherit;
-  }
-
-  button {
+  dialog button {
     display: block;
     margin-top: 2rem;
     width: calc(44px * var(--ratio));
@@ -116,19 +65,21 @@ table {
     letter-spacing: calc(3 * var(--leading, 0.025em));
     color: var(--grey-color);
     background-color: var(--light-color-bg);
+    font-family: inherit;
     font-size: large;
     font-weight: 700;
   }
 
-  button:focus {
+  dialog button:focus {
     outline: none;
     border: 0.0625rem solid transparent;
     box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.2rem var(--dark-color-bg);
   }
 
+
   .container{
     margin: 0 auto;
-    width: 900px;
+    width: 1100px;
     max-width: 100vw;
     padding: 0 2rem;
   }
@@ -161,18 +112,17 @@ table {
     font-weight: bold;
   }
 
-  .form-item > input, .radio{
+  .form-item > input, dialog textarea, .form-item > .radio{
     border-radius: calc(3px * var(--ratio));
     outline: none;
     border: transparent solid 1px;
-    background-color: var(--light-color-bg);
-    font-family: inherit;
+    background-color: var(--light-color-bg);  
     font-size: medium;
     padding: 0.3rem 0.5rem;
     height: 40px;
   }
 
-  .form-item > input:focus{
+  .form-item > input:focus, dialog textarea:focus{
     border: var(--grey-color) solid 1px;
   }
 
@@ -186,7 +136,8 @@ table {
 
   div.form-buttons{
     display: flex;
-    width: 100%;
+    width: 80%;
+    margin-left: -16px;
     justify-content: space-between;
     align-items: center;
   }
@@ -230,7 +181,8 @@ input:user-invalid + .error::before{
 }
 
 input:user-invalid + .error.number::before{
-  content: " Enter a value between 0 and 9999";
+  content: "value must be equal or less then 9999";
+  font-family: inherit;
 }
 
 .remove-book{
@@ -239,15 +191,90 @@ input:user-invalid + .error.number::before{
   font-size: 90%;
 }
 
-.radio  {
-  display: flex;  
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
+  column-gap: 16px;
+  row-gap: 12px;
 }
 
-.radio label{
-  font-family: inherit;
-  font-size: 80%;
-  font-weight: lighter;
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+  padding: 16px;
+  border-left: 12px solid var(--lime-color);
+  height: 300px;
+  border-radius: 12px;
+  background-color: var(--light-color-bg);
+  overflow: hidden;
 }
+
+.card p {
+  font-size: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  line-height: 1.5em;
+  max-height: 9em; /* 3 lines * line-height */
+}
+
+.card-buttons{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.card-buttons button{
+  background-color: inherit;
+  border: solid 1px transparent;
+}
+
+.card-buttons button:active {
+  box-shadow: var(--button-shadow);
+}
+
+.card-buttons button:focus{
+  border: 0.0625rem solid transparent;
+}
+
+dialog .text-area{
+  flex: 0.75 0 auto;
+  height: 110px;
+  padding: 0 0 16px 7px;
+}
+dialog textarea{
+  width: 95%;
+  height: 100%;
+  resize: none;
+}
+
+
+.author h4{
+  display: inline;
+}
+
+.author span{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  max-height: 4.5em;
+  font-size: 90%;
+  color: black;
+  letter-spacing: var(--leading, 0.025em);
+}
+
+.form-item > div.radio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  font-size: 90%;
+  width: 194.176px;
+}
+.form-item input{
+  vertical-align: -2px;
+}
+

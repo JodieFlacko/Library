@@ -23,50 +23,41 @@
                         <div class="form-item">
                             <label for="author">Author</label>
                             <input type="text" id="author"name="author" required placeholder="J.K.K. Rowling" maxlength="25">
-                            <div class="error"><span></span></div>
+                            <div class="error"></div>
                         </div>
                         <div class="form-item">
                             <label for="pages">Pages</label>
                             <input type="number" max="9999" id="pages" name="pages" required placeholder="295">
-                            <div class="error number"><span></span></div>
+                            <div class="error number"></div>
                         </div>
                         <div class="form-item">
-                            <label for="radio">Status</label>
+                            <label for="read">Read status</label>
                             <div class="radio">
-                                <div>
-                                    <input type="radio" id="read" name="read" value="read">
+                                <p>
+                                    <input type="radio" id="read"  value="read" name="read">
                                     <label for="read">Read</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="not-read" name="read" value="not read">
-                                    <label for="not-read">Not read yet</label>
-                                </div>
+                                </p>
+                                <p>
+                                    <input type="radio" id="not-read" value="not-read" name="read" checked>
+                                    <label for="not-read">Not Read</label>
+                                </p>
                             </div>
+                        </div>
+                        <div class="form-item text-area">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" placeholder="Enter a short description of the book"></textarea>
                         </div>
                         <div class="form-buttons">
                             <button class="confirm">Confirm</button>
                             <button class="cancel">Cancel</button>
-                            <div class="error"><span></span></div>
+                            <div class="error"></div>
                         </div>
                     </div>
                 </form>
         </dialog>
         <button class="show-modal">Add a book</button>
-        <table>
-            <caption>Library</caption>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Read</th>
-                    <th>&nbsp;</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>   
+        <div class="content">
+        </div>
     </div>
 </body>
 </html>
