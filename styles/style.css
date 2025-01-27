@@ -162,11 +162,15 @@ body {
   border-radius: calc(3px * var(--ratio));
   border: none;
   font-family: inherit;
-  color: var(--grey-color);
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.3);
   background-color: var(--light-color-bg);
   font-size: large;
   font-weight: 700;
-  margin: 2rem auto;
+  margin: 1rem auto;
+}
+
+.show-modal:active{
+  box-shadow: var(--button-shadow);
 }
 
 input:user-invalid + .error::before{
@@ -198,6 +202,7 @@ input:user-invalid + .error.number::before{
   grid-auto-rows: 1fr;
   column-gap: 16px;
   row-gap: 12px;
+  padding: 12px 0;
 }
 
 .card {
@@ -276,5 +281,21 @@ dialog textarea{
 }
 .form-item input{
   vertical-align: -2px;
+}
+
+.header{
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--lime-color);
+}
+
+.header h1{
+  color: rgba(0,0,0,0.6);
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+  0px 8px 13px rgba(0,0,0,0.1),
+  0px 18px 23px rgba(0,0,0,0.1);
 }
 
