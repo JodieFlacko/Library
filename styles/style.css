@@ -31,6 +31,7 @@
   --pink-color-bg: #C2968E;
   --sage-color: #A4AC86;
   --button-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px inset;
+  --light-black-color: rgb(19, 18, 18, 0.8);
 }
 
 body {
@@ -38,6 +39,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--pink-color-bg);
+    color: var(--light-black-color);
 }
 
 /* Table styling from MDN */
@@ -164,6 +166,7 @@ body {
   font-family: inherit;
   text-shadow: 1px 2px 2px rgba(0,0,0,0.3);
   background-color: var(--light-color-bg);
+  color: inherit;
   font-size: large;
   font-weight: 700;
   margin: 1.75rem auto 1rem;
@@ -219,8 +222,7 @@ input:user-invalid + .error.number::before{
 
 .card p {
   font-size: 80%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: auto;
   display: block;
   line-height: 1.5em;
   max-height: 9em; /* 3 lines * line-height */
@@ -267,7 +269,6 @@ dialog textarea{
   line-height: 1.5em;
   max-height: 4.5em;
   font-size: 90%;
-  color: black;
   letter-spacing: var(--leading, 0.025em);
 }
 
