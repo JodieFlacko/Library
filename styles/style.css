@@ -42,6 +42,10 @@ body {
     color: var(--light-black-color);
 }
 
+button {
+  cursor: pointer;
+}
+
 /* Table styling from MDN */
 
   h2 {
@@ -170,10 +174,15 @@ body {
   font-size: large;
   font-weight: 700;
   margin: 1.75rem auto 1rem;
+  transition: filter .2s ease-in-out;
 }
 
 .show-modal:active{
   box-shadow: var(--button-shadow);
+}
+
+.show-modal:hover{
+  filter: brightness(95%);
 }
 
 input:user-invalid + .error::before{
@@ -237,10 +246,17 @@ input:user-invalid + .error.number::before{
 .card-buttons button{
   background-color: inherit;
   border: solid 1px transparent;
+  border-radius: 10%;
+  transition: background-color .2s ease-in-out;
+}
+
+.card-buttons button:hover {
+  background-color: var(--sage-color);
 }
 
 .card-buttons button:active {
   box-shadow: var(--button-shadow);
+  background-color: var(--confirm-color);
 }
 
 .card-buttons button:focus{
@@ -302,5 +318,6 @@ dialog textarea{
   text-transform: uppercase;
   text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
   letter-spacing: -4px;
+  cursor: default;
 }
 
